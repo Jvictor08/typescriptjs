@@ -1,45 +1,72 @@
 //  1- numbers
 
-let x: number = 10
+// let x: number = 10
 
-console.log(x)
+// console.log(x)
 
-x = 16
+// x = 16
 
-console.log(typeof x)
+// console.log(typeof x)
 
-const y:number = 15.654654
+// const y:number = 15.654654
 
-console.log(typeof y)
+// console.log(typeof y)
 
-console.log(y)
+// console.log(y)
 
-console.log(y.toPrecision(3))
+// console.log(y.toPrecision(3))
 
 // 2-String
 
-const firstName: string = "João"
+// const firstName: string = "João"
 
-console.log(firstName.toUpperCase())
+// console.log(firstName.toUpperCase())
 
-const lastName: string = "Victor"
+// const lastName: string = "Victor"
 
-let fullName: string = firstName + " " + lastName
+// let fullName: string = firstName + " " + lastName
 
-console.log(fullName)
+// console.log(fullName)
 
 // 3-Boolean
 
-let a: boolean = false
+// let a: boolean = false
 
-console.log(a)
-console.log(typeof a)
+// console.log(a)
+// console.log(typeof a)
 
-a = true
-console.log(a)
+// a = true
+// console.log(a)
 
 // 4-inference e annotation
 
-let ann: string = "teste"
+// let ann: string = "teste"
 
-let inf = "testeee"
+// let inf = "testeee"
+
+// 5-exercicio 
+
+// var num: number = 5
+// console.log(num)
+// console.log(typeof num)
+
+// var num2 = '5'
+// console.log(num2)
+// console.log(typeof num2)
+
+// console.log('este é o numero ' + num)
+
+// Correção
+
+const n1: number = 5
+
+const numToString = n1.toString()
+
+const printMyNum: string = `eu vou imprimir o numero ${numToString}`
+
+console.log(printMyNum)
+
+console.log(typeof numToString)
+
+
+

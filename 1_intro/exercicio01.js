@@ -1,3 +1,4 @@
+"use strict";
 // function soma (number1, number2 :number) {
 //     console.log(number1 + number2)
 // }
