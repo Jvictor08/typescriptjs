@@ -102,7 +102,7 @@ function userReview(estrela) {
     }
 }
 userReview(5);
-userReview();
+userReview(1);
 function showUserReview(review) {
     if (!review) {
         console.log("Você não foi avaliado");

@@ -118,7 +118,7 @@ function userReview(estrela: number | boolean){
 }
 
 userReview(5)
-userReview()
+userReview(1)
 
 // Correção do exercício
 
