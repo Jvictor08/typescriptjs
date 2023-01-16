@@ -45,3 +45,112 @@ const u2:Client = {email:'matheus@email.com'}
 
 showUserDetails(u1)
 showUserDetails(u2)
+
+// 3- Readonly
+
+interface Car {
+    name: string,
+    brand: string,
+    readonly wheels: number
+}
+
+const fusca:Car = {
+    name: 'fusca',
+    brand: "VW",
+    wheels: 4
+}
+
+console.log(fusca)
+
+// fusca.wheels = 5
+
+
+// 4- index signature
+
+interface CoordObjects {
+    [index: string]: number
+}
+
+let coords: CoordObjects = {
+    x: 10
+}
+
+coords.y = 15
+
+// coords.z = "testee"
+
+console.log(coords)
+
+
+// 5- Extending types
+interface Human {
+    name: string,
+    age: number
+}
+
+interface SuperHuman extends Human {
+    superpowers: string[]
+}
+
+const matheus: Human = {
+    name: "Matheus",
+    age: 30
+}
+
+console.log(matheus)
+
+const goku: SuperHuman = {
+    name: "Goku",
+    age: 35,
+    superpowers: ['kamehameha', 'Genki-dama',]
+}
+
+console.log(goku)
+
+console.log(goku.superpowers[1])
+
+
+// 6- interface types
+
+interface Character {
+    name: string
+}
+
+interface Gun {
+    type: string,
+    caliber: number
+}
+
+type CharacterWithGun = Character & Gun 
+
+const arnold: CharacterWithGun = {
+    name:'Arnold',
+    type:'Shotgun',
+    caliber: 12
+}
+
+console.log(arnold)
+
+console.log(arnold.caliber)
+
+
+// 7- Reqadonly Array
+
+let myArray: ReadonlyArray<string> = ["Maça", "Banana", "Laranja"]
+
+//  myarray[3] = "Mamão"
+
+console.log(myArray)
+
+// myArray[3] = "Mamão"
+
+myArray.forEach((item) => {
+    console.log("Fruta: " + item)
+})
+
+myArray.map((item) => {
+    return `Fruta: ${item}`
+})
+
+console.log(myArray)
+

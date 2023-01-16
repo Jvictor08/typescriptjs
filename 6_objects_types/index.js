@@ -29,3 +29,46 @@ const u1 = { email: 'joão@email.com', role: 'Admin' };
 const u2 = { email: 'matheus@email.com' };
 showUserDetails(u1);
 showUserDetails(u2);
+const fusca = {
+    name: 'fusca',
+    brand: "VW",
+    wheels: 4
+};
+console.log(fusca);
+let coords = {
+    x: 10
+};
+coords.y = 15;
+// coords.z = "testee"
+console.log(coords);
+const matheus = {
+    name: "Matheus",
+    age: 30
+};
+console.log(matheus);
+const goku = {
+    name: "Goku",
+    age: 35,
+    superpowers: ['kamehameha', 'Genki-dama',]
+};
+console.log(goku);
+console.log(goku.superpowers[1]);
+const arnold = {
+    name: 'Arnold',
+    type: 'Shotgun',
+    caliber: 12
+};
+console.log(arnold);
+console.log(arnold.caliber);
+// 7- Reqadonly Array
+let myArray = ["Maça", "Banana", "Laranja"];
+//  myarray[3] = "Mamão"
+console.log(myArray);
+// myArray[3] = "Mamão"
+myArray.forEach((item) => {
+    console.log("Fruta: " + item);
+});
+myArray.map((item) => {
+    return `Fruta: ${item}`;
+});
+console.log(myArray);
