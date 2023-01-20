@@ -60,7 +60,7 @@ const arnold = {
 };
 console.log(arnold);
 console.log(arnold.caliber);
-// 7- Reqadonly Array
+// 7- Readonly Array
 let myArray = ["Maça", "Banana", "Laranja"];
 //  myarray[3] = "Mamão"
 console.log(myArray);
@@ -72,3 +72,19 @@ myArray.map((item) => {
     return `Fruta: ${item}`;
 });
 console.log(myArray);
+// number []
+const myNumberArray = [1, 2, 3, 4, 5];
+// const myNumberArray2: fiveNumbers = [1, 2, "teste", 4, 5] 
+// const myNumberArray3: fiveNumbers = [1, 2, "teste", false, true]
+console.log(myNumberArray);
+const userAgain = ["Paulo", 30];
+console.log(userAgain);
+userAgain[0] = "Jorge";
+console.log(userAgain[0]);
+// 9 Tuplas com readonly
+function showNumbers1(numbers) {
+    // numbers[0] = 10
+    console.log(numbers[0]);
+    console.log(numbers[1]);
+}
+showNumbers1([1, 2]);

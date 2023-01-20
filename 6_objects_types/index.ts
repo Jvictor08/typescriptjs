@@ -134,7 +134,7 @@ console.log(arnold)
 console.log(arnold.caliber)
 
 
-// 7- Reqadonly Array
+// 7- Readonly Array
 
 let myArray: ReadonlyArray<string> = ["Maça", "Banana", "Laranja"]
 
@@ -153,4 +153,39 @@ myArray.map((item) => {
 })
 
 console.log(myArray)
+
+
+// Tuplas
+
+type fiveNumbers = [number, number, number, number, number]
+
+// number []
+
+const myNumberArray: fiveNumbers = [1, 2, 3, 4, 5]
+// const myNumberArray2: fiveNumbers = [1, 2, "teste", 4, 5] 
+// const myNumberArray3: fiveNumbers = [1, 2, "teste", false, true]
+
+console.log(myNumberArray)
+
+type nameAndAge = [string, number]
+
+const userAgain:nameAndAge = ["Paulo", 30]
+
+console.log(userAgain)
+
+userAgain[0] = "Jorge"
+
+console.log(userAgain[0])
+
+
+// 9 Tuplas com readonly
+
+function showNumbers1(numbers: readonly [number, number]) {
+    // numbers[0] = 10
+    console.log(numbers[0])
+    console.log(numbers[1])
+}
+
+showNumbers1([1, 2])
+
 
