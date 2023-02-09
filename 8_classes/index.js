@@ -199,3 +199,79 @@ console.log(privateObj.showPrivateMethod());
 //         this.privateMethod()
 //     }
 // }
+// 14- Static members
+class StaticMembers {
+    static StaticMethod() {
+        console.log("Este é o método estático");
+    }
+}
+StaticMembers.prop = "Teste Static";
+console.log(StaticMembers.prop);
+StaticMembers.StaticMethod();
+// 15- Generic Class
+class Item {
+    constructor(first, second) {
+        this.first = first;
+        this.second = second;
+    }
+    get showFirst() {
+        return `O primeiro é: ${this.first}`;
+    }
+}
+const newItem = new Item("Caixa", "Surpresa");
+console.log(newItem);
+console.log(typeof newItem.first);
+const secondItem = new Item(15, true);
+console.log(secondItem.showFirst);
+// 16- Parameters properties
+class ParamProp {
+    constructor(name, qty, price) {
+        this.name = name;
+        this.qty = qty;
+        this.price = price;
+        this.name = name;
+        this.qty = qty;
+        this.price = price;
+    }
+    get showQty() {
+        return `A quantidade em estoque é ${this.qty}`;
+    }
+    get showPrice() {
+        return `O preço do produto é ${this.price}`;
+    }
+}
+const newShirt = new ParamProp("Camisa", 38, 19.95);
+console.log(newShirt.name);
+console.log(newShirt.showPrice);
+console.log(newShirt.showQty);
+// 17- Class expression
+const MyClass = class {
+    constructor(name) {
+        this.name = name;
+    }
+};
+const pessoa = new MyClass("Geralt de Rívia");
+console.log(pessoa);
+console.log(pessoa.name);
+// 18- Abstract Class
+class AbstractClass {
+}
+// const newObj = new AbstractClass
+class AbstractExample extends AbstractClass {
+    constructor(name) {
+        super();
+        this.name = name;
+    }
+    showName() {
+        console.log(`O nome é ${this.name}`);
+    }
+}
+const newAbstractObj = new AbstractExample("Josias o Paladino");
+newAbstractObj.showName();
+// 19-Relação entre classes
+class Dog {
+}
+class Cat {
+}
+const doguinho = new Cat();
+console.log(doguinho);
