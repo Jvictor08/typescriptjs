@@ -1,0 +1,1 @@
+export const someName = "Está constante mudou de nome."
