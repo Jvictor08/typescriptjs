@@ -150,3 +150,109 @@ class Monster {
 const charmander = new Monster("Charmander", 10)
 
 console.log(charmander)
+
+// 6-Proprety Decorator
+// Exigência do sistema todos os ids devem vir no formato EX: (00001)
+function formatNumber() {
+    return function(target: Object, propertyKey: string) {
+        
+        let value: string
+
+        const getter = function() {
+            return value
+        }
+
+        const setter = function (newVal: string) {
+            value = newVal.padStart(5, "0")
+        }
+
+        Object.defineProperty(target, propertyKey, {
+            set: setter,
+            get: getter
+        })
+
+    }
+}
+
+class Id {
+    @formatNumber()
+    id 
+
+    constructor(id: string) {
+        this.id = id
+    }
+}
+
+const newItem = new Id('1')
+
+console.log(newItem)
+
+
+// 7- Exemplo real com class decorator
+function createdDate(created: Function) {
+    created.prototype.createdAt = new Date()
+}
+
+@createdDate
+class Book{
+    id
+    createdAt?: Date
+
+    constructor(id: number) {
+        this.id = id
+    }
+}
+
+@createdDate
+class Pen {
+    id
+
+    constructor(id: number) {
+        this.id = id
+    }
+}
+
+const newPen = new Pen(12)
+
+const newBook = new Book(11)
+
+console.log(newPen)
+
+console.log(newBook.createdAt)
+
+
+// 8 - Exemplo Real method decorator
+function checkIfUserPosted() {
+    return function(
+        target: Object, 
+        key: string | Symbol, 
+        descriptor: PropertyDescriptor
+    ){
+        const childFunction = descriptor.value;
+        console.log(childFunction);
+        descriptor.value = function(...args: any[]){
+            if(args[1] === true) {
+                console.log("O usúario já postou!!")
+                return null
+            }else{
+                return childFunction.apply(this, args)
+            }
+        }
+    } 
+}
+
+class Post {
+    alreadyPosted = false
+
+    @checkIfUserPosted()
+    post(content: string, alreadyPosted: boolean){
+        this.alreadyPosted = true
+        console.log(`Post do usúario: ${content}`)
+    }
+}
+
+const newPost = new Post();
+
+newPost.post("Meu primeiro post!", newPost.alreadyPosted)
+newPost.post("Meu segundo post!", newPost.alreadyPosted)
+newPost.post("Meu terceiro post!", newPost.alreadyPosted)

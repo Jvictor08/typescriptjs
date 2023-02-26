@@ -112,3 +112,86 @@ __decorate([
 ], Monster.prototype, "showAge", null);
 const charmander = new Monster("Charmander", 10);
 console.log(charmander);
+// 6-Proprety Decorator
+// Exigência do sistema todos os ids devem vir no formato EX: (00001)
+function formatNumber() {
+    return function (target, propertyKey) {
+        let value;
+        const getter = function () {
+            return value;
+        };
+        const setter = function (newVal) {
+            value = newVal.padStart(5, "0");
+        };
+        Object.defineProperty(target, propertyKey, {
+            set: setter,
+            get: getter
+        });
+    };
+}
+class Id {
+    constructor(id) {
+        this.id = id;
+    }
+}
+__decorate([
+    formatNumber()
+], Id.prototype, "id", void 0);
+const newItem = new Id('1');
+console.log(newItem);
+// 7- Exemplo real com class decorator
+function createdDate(created) {
+    created.prototype.createdAt = new Date();
+}
+let Book = class Book {
+    constructor(id) {
+        this.id = id;
+    }
+};
+Book = __decorate([
+    createdDate
+], Book);
+let Pen = class Pen {
+    constructor(id) {
+        this.id = id;
+    }
+};
+Pen = __decorate([
+    createdDate
+], Pen);
+const newPen = new Pen(12);
+const newBook = new Book(11);
+console.log(newPen);
+console.log(newBook.createdAt);
+// 8 - Exemplo Real method decorator
+function checkIfUserPosted() {
+    return function (target, key, descriptor) {
+        const childFunction = descriptor.value;
+        console.log(childFunction);
+        descriptor.value = function (...args) {
+            if (args[1] === true) {
+                console.log("O usúario já postou!!");
+                return null;
+            }
+            else {
+                return childFunction.apply(this, args);
+            }
+        };
+    };
+}
+class Post {
+    constructor() {
+        this.alreadyPosted = false;
+    }
+    post(content, alreadyPosted) {
+        this.alreadyPosted = true;
+        console.log(`Post do usúario: ${content}`);
+    }
+}
+__decorate([
+    checkIfUserPosted()
+], Post.prototype, "post", null);
+const newPost = new Post();
+newPost.post("Meu primeiro post!", newPost.alreadyPosted);
+newPost.post("Meu segundo post!", newPost.alreadyPosted);
+newPost.post("Meu terceiro post!", newPost.alreadyPosted);
